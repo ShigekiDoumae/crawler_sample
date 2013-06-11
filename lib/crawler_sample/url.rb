@@ -1,16 +1,3 @@
-require "open-uri"
-class String
-  include CrawlSample
-
-  def crawler
-    url=Url.new(:value=>self)
-    raise "URL is invalid" unless url.valid?
-    crawl(url.value).each do|contents|
-      yield
-    end
-  end
-end
-
 class Url
   attr_accessor :scheme, :host, :value
   def initialize(values = {})
